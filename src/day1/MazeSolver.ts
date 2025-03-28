@@ -29,11 +29,10 @@ function walk(maze: string[], wall: string, curr: Point, end: Point, seen: boole
     }
 
     // 2. recursive casse
-    // pre
-    path.push(curr);
-
     // if none of the base cases worked that means that we can go into this direction and can mark the cell as a seen one
+    // pre
     seen[curr.y][curr.x] = true;
+    path.push(curr);
 
     // recurse
     for(let i = 0; i < directions.length; ++i){
