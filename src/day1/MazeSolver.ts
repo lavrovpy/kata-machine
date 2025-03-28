@@ -32,19 +32,19 @@ function walk(maze: string[], wall: string, curr: Point, end: Point, seen: boole
     // pre
     path.push(curr);
 
+    // if none of the base cases worked that means that we can go into this direction and can mark the cell as a seen one
+    seen[curr.y][curr.x] = true;
+
     // recurse
     for(let i = 0; i < directions.length; ++i){
-        const [x, y] = directions[i];
         const point_to_go: Point = {
-            x: curr.x + x,
-            y: curr.y + y
+            x: curr.x + directions[i][0],
+            y: curr.y + directions[i][1]
         };
-        console.log(`point to go: ${JSON.stringify(point_to_go)}`);
         if(walk(maze, wall, point_to_go, end, seen, path)){
             return true;
         }
 
-        seen[point_to_go.y][point_to_go.x] = true;
     };
 
     // post
